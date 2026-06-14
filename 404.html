@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>4animals</title>
+    <!--
+      Single-Page-App Weiterleitung für GitHub Pages.
+      Wandelt einen direkt aufgerufenen Pfad (z. B. /4animals-vorschau/dogs/add)
+      in einen Query-String um und leitet auf index.html weiter, wo das
+      React-Router-Routing greift.
+      pathSegmentsToKeep = 1, da es sich um eine Project-Page handelt
+      und der Segment-Pfad /4animals-vorschau erhalten bleiben muss.
+    -->
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
